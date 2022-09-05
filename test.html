@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>实验2</title>
+    <style>
+        #pics_wrap * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            /*去掉列表的样式*/
+        }
+        
+        #pics_wrap {
+            width: 980px;
+            height: 300px;
+            margin: 150px auto;
+            /*atuo会使其居中*/
+            position: relative;
+            cursor: pointer;
+        }
+        
+        #pics_container li {
+            display: none;
+            position: absolute;
+            /*绝对定位，相对于上面用相对定位的父元素*/
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        #pics_num {
+            position: absolute;
+            /*绝对定位，相对于上面用相对定位的父元素#wrap*/
+            z-index: 2;
+            /*比上面#pic li的对应属性的值大，因此这个元素会显示在更上层，覆盖在上一个元素上面*/
+            bottom: 20px;
+            left: 100px;
+        }
+        
+        #pics_num li {
+            float: left;
+            /*向左浮动，使列表水平排列*/
+            width: 16px;
+            height: 16px;
+            margin: 5px;
+            border-radius: 50%;
+            /*border-radius圆角边框，四个角都为半径为原来边长的50%的圆弧，使呈现为小圆点形状*/
+            border: 1px solid #FFFFFF;
+            line-height: 20px;
+            background: #fefefe;
+            text-align: center;
+        }
+        
+        #pics_num li.active {
+            background: #ECBC0E;
+            /*当前显示的这一项它的颜色会不同于其他项*/
+        }
+        
+        #pics_wrap .arrow {
+            z-index: 3;
+            /*箭头覆盖在上面两个列表之上显示*/
+            height: 100px;
+            width: 60px;
+            position: absolute;
+            /*相对于使用相对定位的id=wrap*/
+            top: 40%;
+            line-height: 100px;
+            /*可以使其内容在高度为100px的元素中高度居中*/
+            text-align: center;
+            background: #F4E7E7;
+            display: none;
+            /*初始时不显示*/
+        }
+        
+        #pics_wrap:hover .arrow {
+            display: block;
+            /*当鼠标悬停在轮播图区域上方时，箭头以block格式显示出来*/
+        }
+        
+        #pics_wrap .arrow:hover {
+            background: #555555;
+            /*当鼠标悬停在此元素上方时，背景颜色改变*/
+        }
+        
+        #pics_left {
+            position: absolute;
+            left: 0;
+        }
+        
+        #pics_right {
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!--id=wrap的div为整个轮播图的容器。
+里面嵌套的id=pic的ul列表为图片的列表，初始时都将display属性设置为none,不显示出来。
+第二个id=num的ul列表是轮播图下方的代表当前是第几张图的焦点.
+第三部分的两个a标签，为轮播图的左右箭头。-->
+    <div id="pics_wrap">
+        <ul id="pics_container">
+            <li style="display:block;">
+                <img src="images/hust0.jpg" alt="" />
+            </li>
+            <li style="display:none;">
+                <img src="images/hust1.jpg" alt="" />
+            </li>
+            <li style="display:none;">
+                <img src="images/hust2.jpg" alt="" />
+            </li>
+            <li style="display:none;">
+                <img src="images/hust3.jpg" alt="" />
+            </li>
+
+        </ul>
+        <ul id="pics_num">
+            <li class="active">1</li>
+            <li class="">2</li>
+            <li class="">3</li>
+            <li class="">4</li>
+
+        </ul>
+        <a href="javascript:;" class="arrow" id="pics_left">&lt;</a>
+        <a href="javascript:;" class="arrow" id="pics_right">&gt;</a>
+    </div>
+    <script src="js/pics_play.js"></script>
+</body>
+
+</html>
